@@ -6,21 +6,35 @@ var grilla = [
   [7, 8, 9]
 ];
 
-// Ac&aacute; vamos a ir guardando la posición vacía
+// Aca vamos a ir guardando la posición vacía
 var posicionVacia = {
-  fila:2,
-  columna:2
+  fila:3,
+  columna:3
 };
 
-// Esta función va a chequear si el Rompecabezas est&aacute; en la posición ganadora
+// Esta función va a chequear si el Rompecabezas esta en la posición ganadora
 function chequearSiGano(){
+  
+  for (var i = 0; i < grilla.length; i++) {
+    for (var j = 0; j < grilla[i].length; j++) {
+       var grillaInicial = grilla[i][j];
+    }
+  }
+
+  for (var i=1; i < 10; i++) {
+    var grillaCorrecta = i;
+  }
+
+  if (grillaCorrecta === grillaInicial) {
+    mostrarCartelGanador();
+  }
+
 }
-
-
 
 // la hacen los alumnos, pueden mostrar el cartel como prefieran. Pero es importante que usen
 // esta función
 function mostrarCartelGanador(){
+  alert("Ganaste!!!");
 }
 
 // Intercambia posiciones grilla y en el DOM
