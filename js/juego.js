@@ -14,55 +14,58 @@ var posicionVacia = {
 };
 
 // Esta función va a chequear si el Rompecabezas esta en la posición ganadora
-function chequearSiGano(){  
+function chequearSiGano(){
+
+  var posicionInicial = 1;
   for (var i = 0; i < grilla.length; i++) {
-    for (var j = 0; j < grilla[i].length; j++) {
-       var grillaInicial = grilla[i][j];
+    for (var j = 0; j < grilla.length; j++) {
+      if (grilla[i][j] === posicionInicial) {
+        posicionInicial++;
+      }
     }
   }
-  for (var i=1; i < 10; i++) {
-    var grillaCorrecta = i;
-  }
-  if (grillaCorrecta === grillaInicial) {
-    mostrarCartelGanador();
-  }
+  return posicionInicial === 10;
 }
 
 // la hacen los alumnos, pueden mostrar el cartel como prefieran. Pero es importante que usen
 // esta función
 function mostrarCartelGanador(){
-  alert("Ganaste!!!");
+  alert("Ganaste");
 }
 
 // Intercambia posiciones grilla y en el DOM
 function intercambiarPosiciones(fila1, columna1, fila2, columna2){
-  var pieza1 = grilla[fila1][columna1];
-  var pieza2 = grilla[fila2][columna2];
 
-  grilla[fila2][columna2] = pieza1;
-  grilla[fila1][columna1] = pieza2;
+  var posicion1 = grilla[fila1][columna1];
+  var posicion2 = grilla[fila2][columna2];
 
-  var game = document.getElementById("juego");
+  grilla[fila1][columna1] = posicion2;
+  grilla[fila2][columna2] = posicion1;
 
-  var piezaInicial = document.getElementById("pieza-" + pieza1);
-  var piezaInicialClonada = piezaInicial.cloneNode(true);
+  var pieza1 = document.getElementById(`pieza-${posicion1}`);
+  var pieza1Clon = pieza1.cloneNode(true);
 
-  var piezaACambiar = document.getElementById("pieza-"+ pieza2);
-  var piezaACambiarClonada = piezaACambiar.cloneNode(true);
+  var pieza2 = document.getElementById(`pieza-${posicion2}`);
+  var pieza2Clon = pieza2.cloneNode(true);
+
+  var rompecabeza = pieza1.parentNode;
+  rompecabeza.replaceChild(pieza2Clon, pieza1);
+  rompecabeza = pieza2.parentNode;
+  rompecabeza.replaceChild(pieza1Clon, pieza2);
   
-  game.replaceChild(piezaACambiarClonada, piezaInicial);
-  game.replaceChild(piezaInicialClonada, piezaACambiar);
 }
 
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila,nuevaColumna){
   posicionVacia.fila = nuevaFila;
-  posicionVacia.columna = nuevaColumna;  
+  posicionVacia.columna = nuevaColumna;
 }
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna){
-  (fila < 0 || fila > 2 || columna < 0 || columna > 2);
+  if (fila  >=0 && fila <=2 && columna >=0 && columna <=2){
+    return true;
+  }
 }
 
 // Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando
@@ -74,36 +77,31 @@ function moverEnDireccion(direccion){
 
   // Intercambia pieza blanca con la pieza que está arriba suyo
   if(direccion == 40){
-    nuevaFilaPiezaVacia = posicionVacia.fila-1;
+    nuevaFilaPiezaVacia = posicionVacia.fila+1;
     nuevaColumnaPiezaVacia = posicionVacia.columna;
   }
   // Intercambia pieza blanca con la pieza que está abajo suyo
   else if (direccion == 38) {
-    nuevaFilaPiezaVacia = posicionVacia.fila+1;
+    nuevaFilaPiezaVacia = posicionVacia.fila-1;
     nuevaColumnaPiezaVacia = posicionVacia.columna;
   }
   // Intercambia pieza blanca con la pieza que está a su izq
   else if (direccion == 39) {
-    // Completar
-    nuevaColumnaPiezaVacia = posicionVacia.columna-1;
+    nuevaColumnaPiezaVacia = posicionVacia.columna+1;
     nuevaFilaPiezaVacia = posicionVacia.fila;
   }
   // Intercambia pieza blanca con la pieza que está a su der
   else if (direccion == 37) {
-    // Completar
-    nuevaColumnaPiezaVacia = posicionVacia.columna+1;
+    nuevaColumnaPiezaVacia = posicionVacia.columna-1;
     nuevaFilaPiezaVacia = posicionVacia.fila;
   }
 
   // Se chequea si la nueva posición es válida, si lo es, se intercambia 
   if (posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)){
-
     intercambiarPosiciones(posicionVacia.fila, posicionVacia.columna,
-                            nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
-
+    nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
     actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
   }
-
 }
 
 // Extras, ya vienen dadas

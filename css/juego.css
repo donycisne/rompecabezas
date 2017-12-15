@@ -6,7 +6,7 @@ body {
   margin: 5% auto;
   min-height: 100%;
   background-image: url(../img/adventure.jpg);
-  background-repeat: no-repeat;  
+  background-repeat: no-repeat;
 }
 
 h1 {
@@ -57,28 +57,30 @@ footer{
 }
 
 .col-40 {
+  background: #FFF;
   padding: 30px;
   color: #000;
-  background: #FFF;
 }
 
 #juego {
   width: 600px;
   height: 600px;
-  background: rgb(112, 25, 114);
+  background: #fff;
   border: 3px solid rgb(112, 25, 114);
 }
 
 #juego div {
-  text-align: center;
+  height: 32.5%;
+  width: 32.5%;
+  float: left;
   animation: fadein 2s;
+  border: 2.5px solid rgb(112, 25, 114);
 }
 
+/* .rompecabezas */
 #juego img {
-  float: left;
-  width: 32.5%;
-  height: 32.5%;
-  border: 2.5px solid rgb(112, 25, 114);
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes fadein {
