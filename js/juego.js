@@ -30,7 +30,12 @@ function chequearSiGano(){
 // la hacen los alumnos, pueden mostrar el cartel como prefieran. Pero es importante que usen
 // esta función
 function mostrarCartelGanador(){
-  alert("Ganaste");
+  var mensaje = document.getElementById("mensaje");
+  mensaje.style.display = "block";
+}
+
+function ocultarCartelGanador() {
+  mensaje.style.display = 'none';
 }
 
 // Intercambia posiciones grilla y en el DOM
@@ -55,6 +60,17 @@ function intercambiarPosiciones(fila1, columna1, fila2, columna2){
   
 }
 
+// Cambiar de Rompecabezas
+function cambiarRompecabeza() {
+  var rompecabeza = [10, 20, 30, 40, 50, 60];
+  var cambiar = rompecabeza[Math.floor(Math.random()*rompecabeza.length)];
+  for(var i = 1; i < 10; i++){
+    document.getElementById(`picture`).src=`img/${cambiar}.png`;
+    document.getElementById(`modelo`).src=`img/${cambiar}.png`;
+    document.getElementById(`pieza-${i}`).src=`img/${cambiar+i}.png`;    
+  }
+}
+
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila,nuevaColumna){
   posicionVacia.fila = nuevaFila;
@@ -77,22 +93,22 @@ function moverEnDireccion(direccion){
 
   // Intercambia pieza blanca con la pieza que está arriba suyo
   if(direccion == 40){
-    nuevaFilaPiezaVacia = posicionVacia.fila+1;
+    nuevaFilaPiezaVacia = posicionVacia.fila-1;
     nuevaColumnaPiezaVacia = posicionVacia.columna;
   }
   // Intercambia pieza blanca con la pieza que está abajo suyo
   else if (direccion == 38) {
-    nuevaFilaPiezaVacia = posicionVacia.fila-1;
+    nuevaFilaPiezaVacia = posicionVacia.fila+1;
     nuevaColumnaPiezaVacia = posicionVacia.columna;
   }
   // Intercambia pieza blanca con la pieza que está a su izq
   else if (direccion == 39) {
-    nuevaColumnaPiezaVacia = posicionVacia.columna+1;
+    nuevaColumnaPiezaVacia = posicionVacia.columna-1;
     nuevaFilaPiezaVacia = posicionVacia.fila;
   }
   // Intercambia pieza blanca con la pieza que está a su der
   else if (direccion == 37) {
-    nuevaColumnaPiezaVacia = posicionVacia.columna-1;
+    nuevaColumnaPiezaVacia = posicionVacia.columna+1;
     nuevaFilaPiezaVacia = posicionVacia.fila;
   }
 

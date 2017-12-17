@@ -2,17 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>BMO Arcade</title>
+    <title>Rompecabezas</title>
     <link rel="stylesheet" href="css/juego.css">
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Cabin:600|Titillium+Web" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
+    <link rel="shortcut icon" href="img/puzzle.png" type="image/x-icon">
   </head>
   <body>
     <div class="col-40">
       <div id="titulo">
         <h1>Rompecabezas</h1>
       </div>
-
       <div id="instrucciones">
         <h2>Instrucciones</h2>
         <ul>
@@ -20,29 +21,54 @@
           <li>Encontar el orden correcto de las piezas</li>
         </ul>
       </div>
-    </div>
-
-    <div class="col-60">
-      <div id="juego">
-        <div><img src="img/10.jpg" id="pieza-1"></div>
-        <div><img src="img/20.jpg" id="pieza-2"></div>
-        <div><img src="img/30.jpg" id="pieza-3"></div>
-        <div><img src="img/40.jpg" id="pieza-4"></div>
-        <div><img src="img/50.jpg" id="pieza-5"></div>
-        <div><img src="img/60.jpg" id="pieza-6"></div>
-        <div><img src="img/70.jpg" id="pieza-7"></div>
-        <div><img src="img/80.jpg" id="pieza-8"></div>
-        <div><img src="img/90.jpg" id="pieza-9"></div>
+      <div class="modelo">
+          <input type="checkbox" id="activo">
+          <label for="activo">
+            <img id="picture" src="img/10.png" alt="rompecabeza-armado">
+          </label>
+          <div class="modelo_capa">
+            <div class="modelo_encima">
+              <label for="activo">&#10006;</label>
+              <img id="modelo" src="img/10.png" alt="rompecabeza-armado-modelo">
+            </div>
+          </div>
+      </div>
+      <div class="cambiar">
+        <button onclick="cambiarRompecabeza()">Cambiar</button>
+      </div>      
+      <div id="mensaje" class="mostrar">
+        <div class="mensaje">
+          <div class="contenido">
+            <h2>Felicidades</h2>
+            <img src="img/felicidades.png" alt="Felicidades">
+            <div>
+              Armaste el rompecabezas correctamente.
+            </div>
+            <a href="#">
+              <button onclick="ocultarCartelGanador()">Continuar</button>
+            </a>
+          </div>          
+        </div>
       </div>
     </div>
-
+    <div class="col-60">
+      <div id="juego">
+        <div><img src="img/11.png" id="pieza-1"></div>
+        <div><img src="img/12.png" id="pieza-2"></div>
+        <div><img src="img/13.png" id="pieza-3"></div>
+        <div><img src="img/14.png" id="pieza-4"></div>
+        <div><img src="img/15.png" id="pieza-5"></div>
+        <div><img src="img/16.png" id="pieza-6"></div>
+        <div><img src="img/17.png" id="pieza-7"></div>
+        <div><img src="img/18.png" id="pieza-8"></div>
+        <div><img src="img/19.png" id="pieza-9"></div>
+      </div>
+    </div>
     <footer>
         <span>
             Autor: Oliver Duran, desarrollador Full Stack Jr.            
         </span>
     </footer>
-
     <script src="js/juego.js"></script>
-
   </body>
 </html>
