@@ -69,6 +69,7 @@ function cambiarRompecabeza() {
     document.getElementById(`modelo`).src=`img/${cambiar}.png`;
     document.getElementById(`pieza-${i}`).src=`img/${cambiar+i}.png`;    
   }
+  mezclarPiezas(60);
 }
 
 // Actualiza la posición de la pieza vacía
@@ -93,22 +94,22 @@ function moverEnDireccion(direccion){
 
   // Intercambia pieza blanca con la pieza que está arriba suyo
   if(direccion == 40){
-    nuevaFilaPiezaVacia = posicionVacia.fila-1;
+    nuevaFilaPiezaVacia = posicionVacia.fila+1;
     nuevaColumnaPiezaVacia = posicionVacia.columna;
   }
   // Intercambia pieza blanca con la pieza que está abajo suyo
   else if (direccion == 38) {
-    nuevaFilaPiezaVacia = posicionVacia.fila+1;
+    nuevaFilaPiezaVacia = posicionVacia.fila-1;
     nuevaColumnaPiezaVacia = posicionVacia.columna;
   }
   // Intercambia pieza blanca con la pieza que está a su izq
   else if (direccion == 39) {
-    nuevaColumnaPiezaVacia = posicionVacia.columna-1;
+    nuevaColumnaPiezaVacia = posicionVacia.columna+1;
     nuevaFilaPiezaVacia = posicionVacia.fila;
   }
   // Intercambia pieza blanca con la pieza que está a su der
   else if (direccion == 37) {
-    nuevaColumnaPiezaVacia = posicionVacia.columna+1;
+    nuevaColumnaPiezaVacia = posicionVacia.columna-1;
     nuevaFilaPiezaVacia = posicionVacia.fila;
   }
 
