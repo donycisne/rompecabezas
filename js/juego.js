@@ -13,6 +13,8 @@ var posicionVacia = {
   columna:2
 };
 
+var mezclarVeces = 60;
+
 // Esta función va a chequear si el Rompecabezas esta en la posición ganadora
 function chequearSiGano(){
 
@@ -69,7 +71,7 @@ function cambiarRompecabeza() {
     document.getElementById(`modelo`).src=`img/${cambiar}.png`;
     document.getElementById(`pieza-${i}`).src=`img/${cambiar+i}.png`;    
   }
-  mezclarPiezas(60);
+  mezclarPiezas(mezclarVeces);
 }
 
 // Actualiza la posición de la pieza vacía
@@ -80,9 +82,7 @@ function actualizarPosicionVacia(nuevaFila,nuevaColumna){
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna){
-  if (fila  >=0 && fila <=2 && columna >=0 && columna <=2){
-    return true;
-  }
+  return(fila  >=0 && fila <=2 && columna >=0 && columna <=2)
 }
 
 // Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando
@@ -151,7 +151,7 @@ function capturarTeclas(){
 }
 
 function iniciar(){
-  mezclarPiezas(60);
+  mezclarPiezas(mezclarVeces);
   capturarTeclas();
 }
 
